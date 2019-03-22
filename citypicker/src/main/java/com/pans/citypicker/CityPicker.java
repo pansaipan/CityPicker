@@ -211,8 +211,6 @@ public class CityPicker implements OnWheelClickedListener{
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
         dialog.setContentView(rootView);
-
-
         popupInit();
 
 
