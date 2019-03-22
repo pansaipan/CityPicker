@@ -1,5 +1,6 @@
 package com.pans.citypicker;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -10,6 +11,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -96,7 +100,7 @@ public class CityPicker implements OnWheelClickedListener{
 
     protected  Builder builder;
 
-    private PopupWindow popwindow;
+    private Dialog dialog;
     View rootView;
 
     List<Province> mProvinces;
@@ -153,7 +157,7 @@ public class CityPicker implements OnWheelClickedListener{
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (popwindow==null||!popwindow.isShowing()) {
+            if (dialog==null||!dialog.isShowing()) {
                 return;
             }
             switch (msg.what) {
@@ -191,16 +195,22 @@ public class CityPicker implements OnWheelClickedListener{
             return;
         }
 
-        rootView = LayoutInflater.from(context).inflate(R.layout.dialog_city_picker, null);
+        dialog = new Dialog(context);
 
-        popwindow = new PopupWindow(rootView
-                , LinearLayout.LayoutParams.MATCH_PARENT
-                , LinearLayout.LayoutParams.WRAP_CONTENT);
-        popwindow.setAnimationStyle(R.style.AnimBottom);
-        popwindow.setBackgroundDrawable(new ColorDrawable());
-        popwindow.setTouchable(true);
-        popwindow.setOutsideTouchable(false);
-        popwindow.setFocusable(true);
+        Window window = dialog.getWindow();
+
+        window.requestFeature(Window.FEATURE_NO_TITLE);
+        window.setGravity(Gravity.BOTTOM);
+        window.setBackgroundDrawable(new ColorDrawable(0x00000000));
+        window.setWindowAnimations(R.style.AnimBottom);
+
+        rootView = LayoutInflater.from(context).inflate(R.layout.dialog_city_picker, null);
+        window.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams lp = window.getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        window.setAttributes(lp);
+        dialog.setContentView(rootView);
 
 
         popupInit();
@@ -310,7 +320,7 @@ public class CityPicker implements OnWheelClickedListener{
                             .get(countiesWheel.getCurrentItem()) : null;
                     listener.onPicked(province, city, county);
                 }
-                popwindow.dismiss();
+                dialog.dismiss();
             }
         });
 
@@ -320,12 +330,12 @@ public class CityPicker implements OnWheelClickedListener{
 
             @Override
             public void onClick(View v) {
-                popwindow.dismiss();
+                dialog.dismiss();
             }
         });
 
 
-        popwindow.showAtLocation(rootView, Gravity.BOTTOM, 0, 0);
+        dialog.show();
 
     }
 
