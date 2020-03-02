@@ -131,6 +131,11 @@ public class CityPicker implements OnWheelClickedListener{
         this.builder = builder;
     }
 
+
+    public Builder getBuilder() {
+        return builder;
+    }
+
     /**
      * 初始化数据，解析json数据
      */
@@ -442,6 +447,10 @@ public class CityPicker implements OnWheelClickedListener{
         countiesWheel.setCurrentItem(countyItem, false);
 
 
+    }
+
+    public List<Province> getProvinces() {
+        return mProvinces;
     }
 
     @Override
