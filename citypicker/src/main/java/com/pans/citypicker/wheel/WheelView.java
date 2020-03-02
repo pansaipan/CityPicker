@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -376,6 +377,7 @@ public class WheelView extends View
      */
     public void setCurrentItem(int index, boolean animated, int duration)
     {
+
         if (viewAdapter == null || viewAdapter.getItemsCount() == 0)
         {
             return; // throw?
@@ -425,6 +427,50 @@ public class WheelView extends View
             }
         }
     }
+
+
+    /**
+     * Sets the current item. Does nothing when index is wrong.
+     *
+     * @param index the item index
+     */
+    public void setDefaultCurrentItem(int index)
+    {
+
+        if (viewAdapter == null || viewAdapter.getItemsCount() == 0)
+        {
+            return; // throw?
+        }
+
+        int itemCount = viewAdapter.getItemsCount();
+        if (index < 0 || index >= itemCount)
+        {
+            if (isCyclic)
+            {
+                while (index < 0)
+                {
+                    index += itemCount;
+                }
+                index %= itemCount;
+            }
+            else
+            {
+                return; // throw?
+            }
+        }
+        if (index != currentItem)
+        {
+            scrollingOffset = 0;
+
+            int old = currentItem;
+            currentItem = index;
+
+           // notifyChangingListeners(old, currentItem);
+
+            invalidate();
+        }
+    }
+
 
     /**
      * Sets the current item w/o animation. Does nothing when index is wrong.
@@ -786,6 +832,7 @@ public class WheelView extends View
         int offset = scrollingOffset;
         if (pos != currentItem)
         {
+
             setCurrentItem(pos, false);
         }
         else

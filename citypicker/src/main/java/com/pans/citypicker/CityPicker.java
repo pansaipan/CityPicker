@@ -442,9 +442,10 @@ public class CityPicker implements OnWheelClickedListener{
                 }
             }
         }
-        provinceWheel.setCurrentItem(provinceItem, false);
-        citiesWheel.setCurrentItem(cityItem, false);
-        countiesWheel.setCurrentItem(countyItem, false);
+
+        provinceWheel.setDefaultCurrentItem(provinceItem);
+        citiesWheel.setDefaultCurrentItem(cityItem);
+        countiesWheel.setDefaultCurrentItem(countyItem);
 
 
     }
