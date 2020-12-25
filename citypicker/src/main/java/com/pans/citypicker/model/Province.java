@@ -3,18 +3,9 @@ package com.pans.citypicker.model;
 import java.util.ArrayList;
 
 public class Province {
-	String id;
-	String name;
-	ArrayList<City> cities = new ArrayList<>();
+	private String name;
+	private ArrayList<City> cities = new ArrayList<>();
 
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

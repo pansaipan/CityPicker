@@ -418,8 +418,8 @@ public class CityPicker implements OnWheelClickedListener{
             provinceItem = 0;
         } else {
             for (int i = 0; i < mProvinces.size(); i++) {
-                if (mProvinces.get(i).getId()
-                        .equals(defaultProvince.getId())) {
+                if (mProvinces.get(i).getName()
+                        .equals(defaultProvince.getName())) {
                     provinceItem = i;
                     break;
                 }
@@ -435,7 +435,7 @@ public class CityPicker implements OnWheelClickedListener{
             cityItem = 0;
         } else {
             for (int i = 0; i < mCities.size(); i++) {
-                if (mCities.get(i).getId().equals(defaultCity.getId())) {
+                if (mCities.get(i).getName().equals(defaultCity.getName())) {
                     cityItem = i;
                     break;
                 }
@@ -452,8 +452,8 @@ public class CityPicker implements OnWheelClickedListener{
             countyItem = 0;
         } else {
             for (int i = 0; i < mCounties.size(); i++) {
-                if (mCounties.get(i).getId()
-                        .equals(defaultCounty.getId())) {
+                if (mCounties.get(i).getName()
+                        .equals(defaultCounty.getName())) {
                     countyItem = i;
                     break;
                 }

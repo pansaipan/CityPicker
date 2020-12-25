@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CityPickerDialog.iml" filepath="$PROJECT_DIR$/CityPickerDialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CityPicker.iml" filepath="$PROJECT_DIR$/CityPicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/CityPicker-app.iml" filepath="$PROJECT_DIR$/app/CityPicker-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/citypicker/CityPicker-citypicker.iml" filepath="$PROJECT_DIR$/citypicker/CityPicker-citypicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/citypicker/citypicker.iml" filepath="$PROJECT_DIR$/citypicker/citypicker.iml" />
     </modules>
