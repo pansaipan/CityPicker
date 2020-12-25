@@ -478,8 +478,6 @@ public class CityPicker implements OnWheelClickedListener{
         }
     }
 
-
-
     public static class Builder {
         /**
          * 滚轮显示的item个数
