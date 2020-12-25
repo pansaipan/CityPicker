@@ -159,6 +159,23 @@ public class CityPicker implements OnWheelClickedListener{
 
     }
 
+    /**
+     * 初始化数据，解析json数据
+     */
+    public void initData(Context context,String json) {
+        this.context = context;
+
+        try {
+            Type type = new TypeToken<ArrayList<Province>>() {
+            }.getType();
+            mProvinces = new Gson().fromJson(json,type);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(getClass().getName(), "json数据错误");
+        }
+
+    }
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
